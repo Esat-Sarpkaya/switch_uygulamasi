@@ -13,7 +13,7 @@ if((strlen($_POST['s_adi']) > 0) && (strlen($_POST['ip_no']) > 0))
         $sorguswitch = "select * from switch where s_adi='" . $s_adi . "' 
         and ip_no='" .$ip_no. "'";
 
-        echo 'Switch Kaydı Yapıldı';
+        /*echo 'Switch Kaydı Yapıldı';*/
         header("Refresh: 1; url=switchler.php");
     }
     else
