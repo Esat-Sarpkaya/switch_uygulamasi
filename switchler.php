@@ -1,6 +1,20 @@
 <html>
 <head>
     <title>Switch</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        $(function()
+        {
+            $.esat =
+                {
+                    gonder: function ()
+                    {
+                        alert("Switch Kaydı Yapıldı.");
+                    }
+                }
+        });
+
+    </script>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="duzen.css">
 </head>
@@ -21,16 +35,34 @@
 
             <tr>
                 <td colspan="2">
-                    <input type="submit" value="Kaydet" class="girisInput">
+                    <input type="submit" value="Kaydet" class="girisInput" onclick="$.esat.gonder()">
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
-                    <a href="baglama.php">Switchleri Bağla
-                </td>
+                <a href="baglama.php">Switchleri Bağla </a>
             </tr>
 
         </table>
+
+        <tr>
+            <td>Oluşturulmuş Switchler:</td>
+            <td><?php
+                include 'baglan.php';
+                $s = "select * from switch";
+                if ($sorgu = mysqli_query($conn, $s))
+                {
+                    while ($row = mysqli_fetch_assoc($sorgu))
+                    {
+                        echo $row['s_adi'];
+                        echo " ";
+                        echo $row['ip_no'];
+                        echo "; ";
+                    }
+                }
+                ?>
+            </td>
+        </tr>
+
     </form>
 </div>
 </body>
