@@ -12,8 +12,8 @@ if((strlen($_POST['s_adi']) > 0) && (strlen($_POST['port1']) > 0) && (strlen($_P
 
     if(mysqli_query($conn,$sql))
     {
-        echo 'Switchler portlar ile bağlandı.';
-        header("Refresh: 1; url=switchler.php");
+        /*echo 'Switchler portlar ile bağlandı.';*/
+        header("Refresh: 1; url=baglama.php");
     }
 
     else
