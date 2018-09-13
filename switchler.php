@@ -1,20 +1,6 @@
 <html>
 <head>
     <title>Switch</title>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript">
-        $(function()
-        {
-            $.esat =
-                {
-                    gonder: function ()
-                    {
-                        alert("Switch Kaydı Yapıldı.");
-                    }
-                }
-        });
-
-    </script>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="duzen.css">
 </head>
@@ -25,17 +11,17 @@
         <table border="1" width="100%">
             <tr>
                 <td>Switch Oluştur</td>
-                <td><input class="girisInput" type="text" name="s_adi" id="id" placeholder="Switch Adı Girin..."></td>
+                <td colspan="2"><input class="girisInput" type="text" name="s_adi" id="id" placeholder="Switch Adı Girin..."></td>
             </tr>
 
             <tr>
                 <td>Switch Ip'si Girin</td>
-                <td><input class="girisInput" type="text" name="ip_no" placeholder="Switch IP'si Girin..."></td>
+                <td colspan="2"><input class="girisInput" type="text" name="ip_no" placeholder="Switch IP'si Girin..."></td>
             </tr>
 
             <tr>
-                <td colspan="2">
-                    <input type="submit" value="Kaydet" class="girisInput" onclick="$.esat.gonder()">
+                <td height="40" colspan="3">
+                    <input type="submit" value="Kaydet" class="girisInput">
                 </td>
             </tr>
             <tr>
@@ -43,25 +29,35 @@
             </tr>
 
         </table>
-
+        <table border="1" width="100%">
         <tr>
             <td>Oluşturulmuş Switchler:</td>
-            <td><?php
-                include 'baglan.php';
-                $s = "select * from switch";
+            <?php
+            include 'baglan.php';
+            ?><td width="225"><?php
+                $s = "SELECT * FROM switch";
                 if ($sorgu = mysqli_query($conn, $s))
                 {
                     while ($row = mysqli_fetch_assoc($sorgu))
                     {
                         echo $row['s_adi'];
-                        echo " ";
-                        echo $row['ip_no'];
-                        echo "; ";
+                        echo('<br>');
                     }
-                }
-                ?>
+                }?>
+            </td>
+            <td width="225"><?php
+                $t = "SELECT * FROM switch";
+                if ($sorgu2 = mysqli_query($conn, $t))
+                {
+                    while ($row = mysqli_fetch_assoc($sorgu2))
+                    {
+                        echo $row['ip_no'];
+                        echo('<br>');
+                    }
+                }?>
             </td>
         </tr>
+        </table>
 
     </form>
 </div>
